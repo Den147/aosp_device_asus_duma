@@ -41,13 +41,20 @@ ro.hwui.text_large_cache_height=1024
 dalvik.vm.dex2oat-swap=false
 
 # Graphics
-ro.opengles.version=196608
 debug.sf.hw=1
-debug.performance.tuning=1
-video.accelerate.hw=1
-debug.egl.profiler=1
 debug.egl.hw=1
 debug.composition.type=gpu
+persist.hwc.mdpcomp.enable=true
+debug.mdpcomp.4k2kSplit=1
+debug.mdpcomp.logs=0
+dev.pm.dyn_samplingrate=1
+persist.demo.hdmirotationlock=false
+ro.hdmi.enable=true
+persist.speaker.prot.enable=false
+qcom.hw.aac.encoder=true
+ro.opengles.version=196608
+ro.sf.lcd_density=240
+ro.qualcomm.cabl=0
 
 # Display
 persist.hwc.mdpcomp.enable=true
@@ -63,3 +70,47 @@ DEVICE_PROVISIONED=1
 persist.radio.apm_sim_not_pwdn=1
 # Display Traditional Chinese/Simplified Chinese carriers name
 persist.radio.use_cc_names=true
+
+ro.vendor.extension_library=/system/lib/libqc-opt.so
+
+## Tweaks
+# Enable HSUPA for faster upload speeds
+ro.ril.hsxpa=3
+
+# Use Google DNS for faster DNS resolution
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
+
+# Faster boot
+dalvik.vm.dexopt-flags=o=v,
+
+# Video acceleration / GPU rendering
+video.accelerate.hw=1
+debug.sf.hw=1
+debug.egl.profiler=1
+debug.egl.hw=1
+debug.composition.type=gpu
+
+# Do not check JNI (little performance boost without disadvantages)
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+
+# 10 fingers multi touch
+ro.product.max_num_touch=10
+ro.product.multi_touch_enabled=true
+
+# Mimimum pointer duration for better gaming experience without disadvantages
+ro.min_pointer_dur=1
+
+# Much faster responsiveness of touch screen
+windowsmgr.max_events_per_sec=1400
+
+# Faster UI rendering / building without negative effects
+ro.min.fling_velocity=6400
+ro.max.fling_velocity=12800
+
+# Enable RAW support
+ro.camcorder.videoModes=true
+
+# Maximum JPEG quality
+ro.media.enc.jpeg.quality=100
