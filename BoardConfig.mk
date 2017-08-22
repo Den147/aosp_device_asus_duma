@@ -18,6 +18,13 @@ TARGET_BOOTLOADER_BOARD_NAME := duma
 TARGET_BOOTLOADER_NAME := duma
 TARGET_BOARD_INFO_FILE := device/asus/duma/board-info.txt
 
+# Offline Charging
+
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
+RED_LED_PATH := "/sys/class/leds/led:red/brightness"
+BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 

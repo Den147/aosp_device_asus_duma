@@ -15,12 +15,12 @@
 #
 
 import init.duma.usb.rc
+import init.duma.power.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
     symlink /data/tombstones /tombstones
-    write /sys/devices/virtual/graphics/fb0/rgb "32768 32768 32768"
 
 on init
     # Support legacy paths
@@ -39,6 +39,12 @@ on fs
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+
+on charger
+       class_start charger
+
+   # Do not set any USB mode while charging
+   setprop sys.usb.config charging
 
 on boot
     #Create QMUX deamon socket area
@@ -197,12 +203,14 @@ on post-fs-data
 
     rm /data/local/tmp/adreno_config.txt
 
-    # White LED
-    chown system system /sys/class/leds/white/device/lock
-    chown system system /sys/class/leds/white/brightness
-    chown system system /sys/class/leds/white/device/grpfreq
-    chown system system /sys/class/leds/white/device/grppwm
-    chown system system /sys/class/leds/white/device/blink
+    # Red LED
+    chown system system /sys/class/leds/led:red/device/lock
+    chown system system /sys/class/leds/led:red/brightness
+    chown system system /sys/class/leds/led:red/device/grpfreq
+    chown system system /sys/class/leds/led:red/device/grppwm
+    chown system system /sys/class/leds/led:red/device/blink
+
+    chmod 0644 /sys/class/leds/led:red/brightness
 
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 2770 root system
@@ -353,9 +361,21 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
 
+service healthd /sbin/healthd
+    class core
+    critical
+    seclabel u:r:healthd:s0
+    group root system
+
 service charger /sbin/healthd -c
     class charger
     critical
+    user root
+    seclabel u:r:healthd:s0
+
+service qbcharger /charger -m 1
+    disabled
+    oneshot
     seclabel u:r:healthd:s0
 
 service thermald /system/bin/thermald

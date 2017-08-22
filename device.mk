@@ -20,7 +20,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # Camera
 PRODUCT_PACKAGES += \
     Camera2 \
-    camera.duma
+    camera.duma \
+    SnapdragonCamera
 
 # the actual meat of the device-specific product definition
 $(call inherit-product, device/asus/duma/device-common.mk)

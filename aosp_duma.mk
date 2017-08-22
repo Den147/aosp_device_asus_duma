@@ -17,6 +17,12 @@
 # Inherit some common AOSP-OMS stuff.
 $(call inherit-product, vendor/aosp/common.mk)
 
+# Need for AEX Boot Animation
+TARGET_BOOT_ANIMATION_RES := 1080
+
+# Use Magisk as default root method
+DEFAULT_ROOT_METHOD := magisk
+
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
