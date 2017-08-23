@@ -96,9 +96,6 @@ net.dns2=8.8.4.4
 # Faster boot
 dalvik.vm.dexopt-flags=o=v,
 
-# Video acceleration 
-video.accelerate.hw=1
-
 # Do not check JNI (little performance boost without disadvantages)
 ro.kernel.android.checkjni=0
 ro.kernel.checkjni=0
@@ -112,13 +109,6 @@ ro.min_pointer_dur=1
 
 # Much faster responsiveness of touch screen
 windowsmgr.max_events_per_sec=1400
-
-# Faster UI rendering / building without negative effects
-ro.min.fling_velocity=6400
-ro.max.fling_velocity=12800
-
-# Enable RAW support
-ro.camcorder.videoModes=true
 
 # Maximum JPEG quality
 ro.media.enc.jpeg.quality=100
