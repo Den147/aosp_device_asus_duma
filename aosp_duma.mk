@@ -30,7 +30,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/asus/duma/device.mk)
 
-include device/qcom/common/Android.mk
+# include device/qcom/common/Android.mk
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := duma

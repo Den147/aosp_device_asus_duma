@@ -102,8 +102,10 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.conf \
     gps.msm8960
+
+PRODUCT_COPY_FILES += \
+    device/asus/duma/configs/gps.conf:system/etc/gps.conf
 
 # IPC router config
 PRODUCT_COPY_FILES += \

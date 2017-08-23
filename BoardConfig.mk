@@ -19,15 +19,19 @@ TARGET_BOOTLOADER_NAME := duma
 TARGET_BOARD_INFO_FILE := device/asus/duma/board-info.txt
 
 # Offline Charging
-
-BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/charging_enabled"
+BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
 BOARD_CHARGER_ENABLE_SUSPEND := true
 RED_LED_PATH := "/sys/class/leds/led:red/brightness"
+RED_LED_PATH := "/sys/class/leds/red/brightness"
 BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
+CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
+CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/charging_enabled"
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 TARGET_RECOVERY_FSTAB = $(DEVICE_PATH)/rootdir/etc/fstab.duma
 
+# Include other device-specific configuration
 include device/asus/duma/BoardConfigCommon.mk

@@ -204,13 +204,25 @@ on post-fs-data
     rm /data/local/tmp/adreno_config.txt
 
     # Red LED
+    chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/led:red/device/lock
     chown system system /sys/class/leds/led:red/brightness
     chown system system /sys/class/leds/led:red/device/grpfreq
     chown system system /sys/class/leds/led:red/device/grppwm
     chown system system /sys/class/leds/led:red/device/blink
+    chown system system /sys/class/leds/red/device/grpfreq
+    chown system system /sys/class/leds/red/device/grppwm
+    chown system system /sys/class/leds/red/device/blink
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/red/device/grpfreq
+    chown system system /sys/class/leds/red/device/grppwm
+    chown system system /sys/class/leds/red/device/blink
 
     chmod 0644 /sys/class/leds/led:red/brightness
+    chmod 0644 /sys/class/leds/red/brightness
+    chmod 0644 /sys/class/leds/lcd-backlight/brightness
 
     # communicate with mpdecision and thermald
     mkdir /dev/socket/mpdecision 2770 root system
@@ -367,11 +379,8 @@ service healthd /sbin/healthd
     seclabel u:r:healthd:s0
     group root system
 
-service charger /sbin/healthd -c
+service charger /charger
     class charger
-    critical
-    user root
-    seclabel u:r:healthd:s0
 
 service qbcharger /charger -m 1
     disabled

@@ -41,9 +41,6 @@ ro.hwui.text_large_cache_height=1024
 dalvik.vm.dex2oat-swap=false
 
 # Graphics
-debug.sf.hw=1
-debug.egl.hw=1
-debug.composition.type=gpu
 persist.hwc.mdpcomp.enable=true
 debug.mdpcomp.4k2kSplit=1
 debug.mdpcomp.logs=0
@@ -54,6 +51,12 @@ persist.speaker.prot.enable=false
 qcom.hw.aac.encoder=true
 ro.opengles.version=196608
 ro.sf.lcd_density=240
+debug.egl.profiler=1
+debug.composition.type=dyn
+debug.egl.hw=1
+debug.mdpcomp.logs=0
+
+# Cabl
 ro.qualcomm.cabl=0
 
 # Display
@@ -73,6 +76,15 @@ persist.radio.use_cc_names=true
 
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 
+# Duma Hardware Info
+ro.device.chipset=Qualcomm APQ8064 Snapdragon S4 Pro
+ro.device.cpu=Quad-core (4x1.5 GHz Krait)
+ro.device.gpu=Adreno 320
+ro.device.screen_res=1200 x 1920 pixels (~240 ppi pixel density)
+
+# Baseband version
+gsm.version.baseband=N00_0.35.0_1002
+
 ## Tweaks
 # Enable HSUPA for faster upload speeds
 ro.ril.hsxpa=3
@@ -84,12 +96,8 @@ net.dns2=8.8.4.4
 # Faster boot
 dalvik.vm.dexopt-flags=o=v,
 
-# Video acceleration / GPU rendering
+# Video acceleration 
 video.accelerate.hw=1
-debug.sf.hw=1
-debug.egl.profiler=1
-debug.egl.hw=1
-debug.composition.type=gpu
 
 # Do not check JNI (little performance boost without disadvantages)
 ro.kernel.android.checkjni=0
@@ -114,3 +122,53 @@ ro.camcorder.videoModes=true
 
 # Maximum JPEG quality
 ro.media.enc.jpeg.quality=100
+
+# --By HalogenOS Team--
+# Higher fling velocities
+# to smooth scrolling and provide better responsiveness
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+
+# Makes streaming videos stream faster 
+
+media.stagefright.enable-player=true 
+media.stagefright.enable-meta=true 
+media.stagefright.enable-scan=true 
+media.stagefright.enable-http=true 
+media.stagefright.enable-record=true
+
+# Power Saving Tweaks 
+
+ro.ril.disable.power.collapse=1 
+ro.ril.power_collapse=1
+pm.sleep_mode=1 
+wifi.supplicant_scan_interval=180
+
+# Wireless Speed Tweaks 
+
+net.tcp.buffersize.default=4096,87380,256960,4096,16384,256960 
+net.tcp.buffersize.wifi=4096,87380,256960,4096,16384,256960 
+net.tcp.buffersize.umts=4096,87380,256960,4096,16384,256960 
+net.tcp.buffersize.gprs=4096,87380,256960,4096,16384,256960 
+net.tcp.buffersize.edge=4096,87380,256960,4096,16384,256960 
+net.ipv4.tcp_ecn=0 
+net.ipv4.route.flush=1 
+net.ipv4.tcp_rfc1337=1 
+net.ipv4.ip_no_pmtu_disc=0 
+net.ipv4.tcp_sack=1 
+net.ipv4.tcp_fack=1 
+net.ipv4.tcp_window_scaling=1 
+net.ipv4.tcp_timestamps=1 
+net.ipv4.tcp_rmem=4096 39000 187000 
+net.ipv4.tcp_wmem=4096 39000 187000 
+net.ipv4.tcp_mem=187000 187000 187000 
+net.ipv4.tcp_no_metrics_save=1 
+net.ipv4.tcp_moderate_rcvbuf=1
+
+# Signal Tweaks 
+ 
+ro.ril.hsxpa=1 
+ro.ril.gprsclass=10 
+ro.ril.hsdpa.category=8 
+ro.ril.hsupa.category=6 
+persist.cust.tel.eons=1    
