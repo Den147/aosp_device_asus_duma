@@ -83,7 +83,7 @@ ro.device.gpu=Adreno 320
 ro.device.screen_res=1200 x 1920 pixels (~240 ppi pixel density)
 
 # Baseband version
-gsm.version.baseband=N00_0.35.0_1002
+gsm.version.baseband=Nougat-J00_0.35.0_1002
 
 ## Tweaks
 # Enable HSUPA for faster upload speeds
